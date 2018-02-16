@@ -1,0 +1,79 @@
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">This interface is for the Home owner. We will call him Ben !</h4>
+
+  <hr>
+  <p class="mb-0">Ben will reserve the house for a certain address and a certain hash.</p>
+</div>
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel">
+
+    <form #coinForm="ngForm">
+      <div class="field">
+        <label class="label">Customer Address</label>
+        <p class="control">
+          <input
+            [(ngModel)]="address"
+            class="input"
+            type="text"
+            placeholder="Please enter you customer address"
+            name="address"
+            required
+            #sendingAmountModel="ngModel">
+        </p>
+        <!--<div *ngIf="sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"-->
+        <!--class="help is-danger">-->
+        <!--<p [hidden]="!sendingAmountModel.errors.required">-->
+        <!--This field is required-->
+        <!--</p>-->
+        <!--</div>-->
+        <!--<div *ngIf="!sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"-->
+        <!--class="help is-danger">-->
+        <!--<p [hidden]="canBeNumber(sendingAmount)">-->
+        <!--Must be a number-->
+        <!--</p>-->
+        <!--</div>-->
+      </div>
+
+      <!--<div class="field">-->
+        <!--<label class="label">Hash</label>-->
+        <!--<p class="control">-->
+          <!--<input-->
+            <!--[(ngModel)]="secrethash"-->
+            <!--class="input"-->
+            <!--type="text"-->
+            <!--placeholder="Please enter your customer's secret hash"-->
+            <!--name="secrethash"-->
+            <!--required-->
+            <!--#sendingAmountModel="ngModel">-->
+        <!--</p>-->
+        <!--&lt;!&ndash;<div *ngIf="sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"&ndash;&gt;-->
+        <!--&lt;!&ndash;class="help is-danger">&ndash;&gt;-->
+        <!--&lt;!&ndash;<p [hidden]="!sendingAmountModel.errors.required">&ndash;&gt;-->
+        <!--&lt;!&ndash;This field is required&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div *ngIf="!sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"&ndash;&gt;-->
+        <!--&lt;!&ndash;class="help is-danger">&ndash;&gt;-->
+        <!--&lt;!&ndash;<p [hidden]="canBeNumber(sendingAmount)">&ndash;&gt;-->
+        <!--&lt;!&ndash;Must be a number&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--</div>-->
+
+
+      <div class="field is-grouped">
+        <p class="control">
+          <button
+            [disabled]="!coinForm.valid"
+            (click)="reserve()"
+            class="button is-primary">
+            Reserve
+          </button>
+        </p>
+      </div>
+    </form>
+
+
+  </div>
+
+

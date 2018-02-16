@@ -1,0 +1,247 @@
+<!--<section class="hero is-medium is-info is-bold">-->
+  <!--<div class="hero-body">-->
+    <!--<div class="container">-->
+      <!--<h1 class="title is-1">-->
+        <!--Metacoin ~ Angular4 + Truffle Starter Dapp-->
+      <!--</h1>-->
+      <!--<h2 class="title">-->
+        <!--You have <span class="is-medium has-underline">{{balance}}</span> META-->
+      <!--</h2>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</section>-->
+<!--<br>-->
+<!--<div class="container">-->
+  <!--<h1 class="title">Send Metacoin</h1>-->
+  <!--<h1 class="title is-4 is-info help">{{status}}</h1>-->
+
+  <!--<form #coinForm="ngForm">-->
+    <!--<div class="field">-->
+      <!--<label class="label">Amount</label>-->
+      <!--<p class="control">-->
+        <!--<input-->
+          <!--[(ngModel)]="sendingAmount"-->
+          <!--class="input"-->
+          <!--type="text"-->
+          <!--placeholder="95"-->
+          <!--name="sendingAmount"-->
+          <!--required-->
+          <!--#sendingAmountModel="ngModel">-->
+      <!--</p>-->
+      <!--<div *ngIf="sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"-->
+           <!--class="help is-danger">-->
+          <!--<p [hidden]="!sendingAmountModel.errors.required">-->
+            <!--This field is required-->
+          <!--</p>-->
+      <!--</div>-->
+      <!--<div *ngIf="!sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"-->
+           <!--class="help is-danger">-->
+          <!--<p [hidden]="canBeNumber(sendingAmount)">-->
+            <!--Must be a number-->
+          <!--</p>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<label class="label">To Address</label>-->
+      <!--<p class="control">-->
+        <!--<input-->
+          <!--[(ngModel)]="recipientAddress"-->
+          <!--name="recipientAddress"-->
+          <!--class="input"-->
+          <!--type="text"-->
+          <!--placeholder="0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"-->
+          <!--name="recipientAddress"-->
+          <!--required-->
+          <!--#recipientAddressModel="ngModel"-->
+        <!--&gt;-->
+      <!--</p>-->
+      <!--<div *ngIf="recipientAddressModel.errors && (recipientAddressModel.dirty || recipientAddressModel.touched)"-->
+           <!--class="help is-danger">-->
+          <!--<p [hidden]="!recipientAddressModel.errors.required">-->
+            <!--This field is required-->
+          <!--</p>-->
+      <!--</div>-->
+      <!--<div *ngIf="!recipientAddressModel.errors && (recipientAddressModel.dirty || recipientAddressModel.touched)"-->
+           <!--class="help is-danger">-->
+          <!--<p [hidden]="canBeNumber(recipientAddress)">-->
+            <!--Must be a number-->
+          <!--</p>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="field is-grouped">-->
+      <!--<p class="control">-->
+        <!--<button-->
+          <!--[disabled]="!coinForm.valid"-->
+          <!--(click)="sendCoin()"-->
+          <!--class="button is-primary">-->
+          <!--Send-->
+        <!--</button>-->
+      <!--</p>-->
+    <!--</div>-->
+  <!--</form>-->
+
+  <!--<strong>Hint:</strong> open the browser developer console to view any errors and warnings.-->
+
+<!--</div>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link " data-toggle="tab" href="#home" role="tab" routerLink="/offer">Post Offer</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#profile" role="tab" routerLink="/reserve">Reserve</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#messages" role="tab" routerLink="/messages">Messages</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#settings" role="tab" routerLink="/closechannel">Close Channel</a>
+  </li>
+
+
+
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#settings" role="tab" routerLink="/openchannel">Open Channel</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#settings" role="tab" routerLink="/closechannelcust">Close Channel</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#settings" role="tab" routerLink="/verifyallowance">Verify Allowance</a>
+  </li>
+
+</ul>
+  <router-outlet></router-outlet>
+<!-- Tab panes -->
+<!--<div class="tab-content">-->
+  <!--<div class="tab-pane active" id="home" role="tabpanel">-->
+
+    <!--<form #coinForm="ngForm">-->
+    <!--<div class="field">-->
+      <!--<label class="label">Rent Value</label>-->
+      <!--<p class="control">-->
+        <!--<input-->
+          <!--[(ngModel)]="sendingAmount"-->
+          <!--class="input"-->
+          <!--type="text"-->
+          <!--placeholder="Value to be paid for rent"-->
+          <!--name="sendingAmount"-->
+          <!--required-->
+          <!--#sendingAmountModel="ngModel">-->
+      <!--</p>-->
+      <!--&lt;!&ndash;<div *ngIf="sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"&ndash;&gt;-->
+      <!--&lt;!&ndash;class="help is-danger">&ndash;&gt;-->
+      <!--&lt;!&ndash;<p [hidden]="!sendingAmountModel.errors.required">&ndash;&gt;-->
+      <!--&lt;!&ndash;This field is required&ndash;&gt;-->
+      <!--&lt;!&ndash;</p>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;<div *ngIf="!sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"&ndash;&gt;-->
+      <!--&lt;!&ndash;class="help is-danger">&ndash;&gt;-->
+      <!--&lt;!&ndash;<p [hidden]="canBeNumber(sendingAmount)">&ndash;&gt;-->
+      <!--&lt;!&ndash;Must be a number&ndash;&gt;-->
+      <!--&lt;!&ndash;</p>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+
+    <!--<div class="field">-->
+      <!--<label class="label">Period of Rent</label>-->
+      <!--<p class="control">-->
+        <!--<input-->
+          <!--[(ngModel)]="sendingAmount"-->
+          <!--class="input"-->
+          <!--type="text"-->
+          <!--placeholder="Period of time to rent the place"-->
+          <!--name="sendingAmount"-->
+          <!--required-->
+          <!--#sendingAmountModel="ngModel">-->
+      <!--</p>-->
+      <!--&lt;!&ndash;<div *ngIf="sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"&ndash;&gt;-->
+      <!--&lt;!&ndash;class="help is-danger">&ndash;&gt;-->
+      <!--&lt;!&ndash;<p [hidden]="!sendingAmountModel.errors.required">&ndash;&gt;-->
+      <!--&lt;!&ndash;This field is required&ndash;&gt;-->
+      <!--&lt;!&ndash;</p>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;<div *ngIf="!sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"&ndash;&gt;-->
+      <!--&lt;!&ndash;class="help is-danger">&ndash;&gt;-->
+      <!--&lt;!&ndash;<p [hidden]="canBeNumber(sendingAmount)">&ndash;&gt;-->
+      <!--&lt;!&ndash;Must be a number&ndash;&gt;-->
+      <!--&lt;!&ndash;</p>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<label class="label">Max people</label>-->
+      <!--<p class="control">-->
+        <!--<input-->
+          <!--[(ngModel)]="recipientAddress"-->
+          <!--name="recipientAddress"-->
+          <!--class="input"-->
+          <!--type="text"-->
+          <!--placeholder="maximum number of people allowed to rent the place"-->
+          <!--name="recipientAddress"-->
+          <!--required-->
+          <!--#recipientAddressModel="ngModel"-->
+        <!--&gt;-->
+      <!--</p>-->
+      <!--&lt;!&ndash;<div *ngIf="recipientAddressModel.errors && (recipientAddressModel.dirty || recipientAddressModel.touched)"&ndash;&gt;-->
+      <!--&lt;!&ndash;class="help is-danger">&ndash;&gt;-->
+      <!--&lt;!&ndash;<p [hidden]="!recipientAddressModel.errors.required">&ndash;&gt;-->
+      <!--&lt;!&ndash;This field is required&ndash;&gt;-->
+      <!--&lt;!&ndash;</p>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;<div *ngIf="!recipientAddressModel.errors && (recipientAddressModel.dirty || recipientAddressModel.touched)"&ndash;&gt;-->
+      <!--&lt;!&ndash;class="help is-danger">&ndash;&gt;-->
+      <!--&lt;!&ndash;<p [hidden]="canBeNumber(recipientAddress)">&ndash;&gt;-->
+      <!--&lt;!&ndash;Must be a number&ndash;&gt;-->
+      <!--&lt;!&ndash;</p>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+
+    <!--<div class="field is-grouped">-->
+      <!--<p class="control">-->
+        <!--<button-->
+          <!--[disabled]="!coinForm.valid"-->
+          <!--(click)="sendCoin()"-->
+          <!--class="button is-primary">-->
+          <!--Send-->
+        <!--</button>-->
+      <!--</p>-->
+    <!--</div>-->
+    <!--</form>-->
+
+
+  <!--</div>-->
+  <!--<div class="tab-pane" id="profile" role="tabpanel">...</div>-->
+  <!--<div class="tab-pane" id="messages" role="tabpanel">...</div>-->
+  <!--<div class="tab-pane" id="settings" role="tabpanel">...</div>-->
+<!--</div>-->
+
+</div>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+</script>
+
+
+</body>
+</html>
